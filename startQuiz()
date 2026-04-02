@@ -1,15 +1,1 @@
-function startQuiz() {
 
-  const intro = document.getElementById("intro");
-  const quiz = document.getElementById("quizSection");
-
-  if (!intro || !quiz) {
-    console.error("Missing HTML elements");
-    return;
-  }
-
-  intro.style.display = "none";
-  quiz.style.display = "block";
-
-  render();
-}
