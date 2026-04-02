@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("App loaded");
+});
+
 let cities = [];
 let current = 0;
 let answers = {};
