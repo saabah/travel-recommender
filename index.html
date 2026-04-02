@@ -8,42 +8,62 @@
 
 <body>
 
-<!-- HERO SECTION -->
-<div id="hero">
-  <div class="overlay">
-    <h1>🌏 VayaQuest</h1>
-    <p>Your Next Dream Destination, powered by AI</p>
-    <button onclick="enterApp()">Start Exploring →</button>
-  </div>
-</div>
+<div class="container">
 
-<!-- APP -->
-<div class="container" id="app" style="display:none;">
-
-  <!-- INTRO -->
+  <!-- INTRO SCREEN -->
   <div id="intro">
-    <h2>Welcome to VayaQuest</h2>
+
+    <h1>🌏 VayaQuest: Your Next Dream Destination</h1>
+
     <p>
-      Whether you’re chasing cherry blossoms in Kyoto 🌸, relaxing in Fiji 🏖️,
-      or exploring London 🏰 — we help you find your perfect match.
+      The world is changing, and how we plan our trips should change with it.
+      Whether you’re chasing the cherry blossoms in Kyoto 🌸, seeking a family-friendly
+      escape in Fiji 🏖️, or navigating the winter charm of London 🏰, the
+      <b>VayaQuest</b> platform is designed to suggest your next perfect itinerary.
     </p>
 
-    <button onclick="startQuiz()">Begin Quiz</button>
+    <h2>🧭 What to Expect</h2>
+
+    <ul>
+      <li><b>Financial Clarity:</b> Real-time 2026 projections for daily budgets — from street food in Hanoi to fine dining in Paris. 💸</li>
+      <li><b>Lifestyle Matching:</b> We analyze "Adventure" and "Experience" scores to match your travel vibe. 🧘‍♂️</li>
+      <li><b>Safety & Logistics:</b> Visa requirements and security insights tailored for Aussie travelers. 🛡️</li>
+    </ul>
+
+    <h2>🎯 Our Goal</h2>
+    <p>
+      Travel planning often feels like a second job. Our goal is to eliminate the
+      "tab fatigue" of opening twenty different sites — and give you simple,
+      smart answers.
+    </p>
+
+    <button onclick="startQuiz()">Start Your Journey →</button>
+
   </div>
 
-  <!-- QUIZ -->
+  <!-- QUIZ SECTION -->
   <div id="quizSection" style="display:none;">
-    <div class="progress-bar"><div id="progress"></div></div>
-    <div id="questionBox" class="fade"></div>
 
+    <h1>🌍 Find Your Next Destination</h1>
+
+    <!-- Progress -->
+    <div class="progress-bar">
+      <div id="progress"></div>
+    </div>
+
+    <!-- Question -->
+    <div id="questionBox"></div>
+
+    <!-- Navigation -->
     <div class="nav">
       <button onclick="prev()">Back</button>
       <button onclick="next()">Next</button>
     </div>
-  </div>
 
-  <!-- RESULTS -->
-  <div id="results"></div>
+    <!-- Results -->
+    <div id="results"></div>
+
+  </div>
 
 </div>
 
