@@ -23,13 +23,32 @@ loadCities();
 // NAVIGATION
 // ----------------
 function enterApp() {
-  document.getElementById("hero").style.display = "none";
-  document.getElementById("app").style.display = "block";
+
+  const hero = document.getElementById("hero");
+  const app = document.getElementById("app");
+
+  if (!hero || !app) {
+    console.error("Missing hero/app");
+    return;
+  }
+
+  hero.style.display = "none";
+  app.style.display = "block";
 }
 
 function startQuiz() {
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("quizSection").style.display = "block";
+
+  const intro = document.getElementById("intro");
+  const quiz = document.getElementById("quizSection");
+
+  if (!intro || !quiz) {
+    console.error("Missing HTML elements");
+    return;
+  }
+
+  intro.style.display = "none";
+  quiz.style.display = "block";
+
   render();
 }
 
