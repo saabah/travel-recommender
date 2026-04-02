@@ -1,81 +1,176 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("App loaded");
-});
+let cities = [];
+let current = 0;
+let answers = {};
 
-body {
-  margin:0;
-  font-family: Arial;
+// SAFE LOAD (fixes GitHub issues)
+async function loadCities() {
+  try {
+    const res = await fetch("./data/cities.json");
+    cities = await res.json();
+    console.log("Cities loaded:", cities.length);
+  } catch (err) {
+    alert("Error loading city data. Check file path.");
+    console.error(err);
+  }
+}
+loadCities();
+
+// ----------------
+// NAVIGATION
+// ----------------
+function enterApp() {
+  document.getElementById("hero").style.display = "none";
+  document.getElementById("app").style.display = "block";
 }
 
-/* HERO */
-#hero {
-  height:100vh;
-  background: linear-gradient(120deg,#0077cc,#00c6ff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+function startQuiz() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("quizSection").style.display = "block";
+  render();
 }
 
-.overlay {
-  text-align:center;
-  color:white;
+// ----------------
+// QUESTIONS (SHORT VERSION FOR STABILITY)
+// ----------------
+const questions = [
+{
+  id: "budget",
+  text: "Your budget?",
+  options: [
+    { label: "Low", value: 1 },
+    { label: "Medium", value: 2 },
+    { label: "High", value: 3 }
+  ]
+},
+{
+  id: "flight",
+  text: "Flight tolerance?",
+  options: [
+    { label: "Short", value: 1 },
+    { label: "Medium", value: 2 },
+    { label: "Long", value: 3 }
+  ]
+},
+{
+  id: "activity",
+  text: "Activity level?",
+  options: [
+    { label: "Relax", value: 1 },
+    { label: "Balanced", value: 2 },
+    { label: "Busy", value: 3 }
+  ]
+},
+{
+  id: "family",
+  text: "Travelling with kids?",
+  options: [
+    { label: "No", value: 1 },
+    { label: "Yes", value: 3 }
+  ]
+},
+{
+  id: "culture",
+  text: "Cultural preference?",
+  options: [
+    { label: "Familiar", value: 1 },
+    { label: "Mixed", value: 2 },
+    { label: "Adventure", value: 3 }
+  ]
+}
+];
+
+// ----------------
+// RENDER
+// ----------------
+function render() {
+
+  let q = questions[current];
+
+  let html = `<h2>${q.text}</h2>`;
+
+  q.options.forEach(opt => {
+    let selected = answers[q.id] === opt.value ? "selected" : "";
+    html += `<div class="option ${selected}" onclick="select('${q.id}',${opt.value})">
+      ${opt.label}
+    </div>`;
+  });
+
+  document.getElementById("questionBox").innerHTML = html;
+
+  let progress = ((current + 1)/questions.length)*100;
+  document.getElementById("progress").style.width = progress + "%";
 }
 
-.overlay h1 {
-  font-size:40px;
+// ----------------
+// SELECT
+// ----------------
+function select(id,val) {
+  answers[id] = val;
+  render();
 }
 
-.overlay button {
-  padding:12px 20px;
-  margin-top:20px;
+// ----------------
+// NEXT / PREV
+// ----------------
+function next() {
+  if(current < questions.length-1){
+    current++;
+    render();
+  } else {
+    calculate();
+  }
 }
 
-/* APP */
-.container {
-  max-width:600px;
-  margin:auto;
-  padding:20px;
+function prev() {
+  if(current > 0){
+    current--;
+    render();
+  }
 }
 
-/* PROGRESS */
-.progress-bar {
-  height:8px;
-  background:#ddd;
-  border-radius:10px;
+// ----------------
+// CALCULATE
+// ----------------
+function calculate() {
+
+  let results = cities.map(c => {
+
+    let score =
+      (answers.budget || 1) * c.affordability +
+      (answers.flight || 1) * c.accessibility +
+      (answers.activity || 1) * c.experience +
+      (answers.family || 1) * c.family +
+      (answers.culture || 1) * c.culture;
+
+    return { ...c, score };
+  });
+
+  results.sort((a,b)=>b.score-a.score);
+
+  showResults(results.slice(0,3), results.slice(3,5));
 }
 
-#progress {
-  height:100%;
-  width:0%;
-  background:#0077cc;
-  transition:0.4s;
-}
+// ----------------
+// RESULTS
+// ----------------
+function showResults(top3, wildcard){
 
-/* OPTIONS */
-.option {
-  padding:12px;
-  margin:10px 0;
-  background:#eef3f8;
-  border-radius:8px;
-  cursor:pointer;
-}
+  let div = document.getElementById("results");
 
-.selected {
-  background:#0077cc;
-  color:white;
-}
+  div.innerHTML = "<h2>Top Destinations</h2>";
 
-/* NAV */
-.nav {
-  display:flex;
-  justify-content:space-between;
-  margin-top:20px;
-}
+  top3.forEach(c=>{
+    div.innerHTML += `<div class="card">
+      <h3>${c.name}</h3>
+      <p>Great match based on your preferences.</p>
+    </div>`;
+  });
 
-/* RESULTS */
-.card {
-  background:#eef3f8;
-  padding:15px;
-  margin-top:10px;
-  border-radius:8px;
+  div.innerHTML += "<h2>Wildcard Picks</h2>";
+
+  wildcard.forEach(c=>{
+    div.innerHTML += `<div class="card">
+      <h3>${c.name}</h3>
+    </div>`;
+  });
 }
