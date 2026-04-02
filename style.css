@@ -1,31 +1,93 @@
 body {
-    font-family: Arial;
-    background: #f4f6f9;
+  margin:0;
+  font-family: Arial;
 }
 
+/* HERO */
+#hero {
+  height:100vh;
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.5);
+  padding:40px;
+  text-align:center;
+  color:white;
+  border-radius:10px;
+}
+
+.overlay h1 {
+  font-size:40px;
+}
+
+.overlay button {
+  margin-top:20px;
+  padding:12px 20px;
+  font-size:16px;
+}
+
+/* APP */
 .container {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+  max-width:600px;
+  margin:auto;
+  padding:20px;
 }
 
-.question {
-    margin-bottom: 15px;
+/* PROGRESS */
+.progress-bar {
+  height:8px;
+  background:#ddd;
+  border-radius:10px;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: #0077cc;
-    color: white;
-    border: none;
+#progress {
+  height:100%;
+  width:0%;
+  background:#0077cc;
+  transition:0.4s;
 }
 
+/* OPTIONS */
+.option {
+  padding:12px;
+  margin:10px 0;
+  background:#eef3f8;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.option:hover {
+  background:#dbe7f3;
+}
+
+.selected {
+  background:#0077cc;
+  color:white;
+}
+
+/* ANIMATION */
+.fade {
+  opacity:0;
+  transform: translateX(20px);
+  animation: fadeIn 0.4s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity:1;
+    transform: translateX(0);
+  }
+}
+
+/* CARDS */
 .card {
-    background: #eef3f8;
-    padding: 12px;
-    margin-top: 10px;
-    border-radius: 8px;
+  background:#eef3f8;
+  padding:15px;
+  margin-top:10px;
+  border-radius:8px;
 }
