@@ -1,0 +1,62 @@
+[
+{"name":"Bali","country":"Indonesia","affordability":7.0,"accessibility":6.5,"experience":4.5,"family":6.5,"culture":5.0},
+{"name":"Jakarta","country":"Indonesia","affordability":6.8,"accessibility":6.2,"experience":4.0,"family":5.5,"culture":4.8},
+{"name":"Bangkok","country":"Thailand","affordability":6.7,"accessibility":6.0,"experience":6.0,"family":5.5,"culture":5.8},
+{"name":"Phuket","country":"Thailand","affordability":6.5,"accessibility":6.2,"experience":5.0,"family":6.2,"culture":5.2},
+{"name":"Singapore","country":"Singapore","affordability":3.5,"accessibility":7.0,"experience":5.5,"family":7.0,"culture":6.5},
+{"name":"Kuala Lumpur","country":"Malaysia","affordability":6.2,"accessibility":6.5,"experience":4.5,"family":6.0,"culture":5.5},
+{"name":"Tokyo","country":"Japan","affordability":4.2,"accessibility":5.5,"experience":7.0,"family":6.5,"culture":7.0},
+{"name":"Osaka","country":"Japan","affordability":4.5,"accessibility":5.5,"experience":6.5,"family":6.5,"culture":6.8},
+{"name":"Seoul","country":"South Korea","affordability":5.0,"accessibility":5.5,"experience":6.5,"family":6.0,"culture":6.5},
+{"name":"Hong Kong","country":"China","affordability":3.8,"accessibility":6.0,"experience":6.0,"family":6.5,"culture":6.2},
+
+{"name":"Dubai","country":"UAE","affordability":4.0,"accessibility":4.5,"experience":6.0,"family":7.0,"culture":5.5},
+{"name":"Abu Dhabi","country":"UAE","affordability":4.2,"accessibility":4.5,"experience":5.5,"family":7.0,"culture":5.3},
+{"name":"Doha","country":"Qatar","affordability":4.0,"accessibility":4.0,"experience":5.0,"family":6.5,"culture":5.0},
+
+{"name":"London","country":"UK","affordability":2.5,"accessibility":3.5,"experience":7.0,"family":6.0,"culture":6.5},
+{"name":"Paris","country":"France","affordability":2.8,"accessibility":3.5,"experience":6.8,"family":5.5,"culture":6.8},
+{"name":"Rome","country":"Italy","affordability":3.2,"accessibility":3.5,"experience":6.5,"family":5.5,"culture":6.7},
+{"name":"Barcelona","country":"Spain","affordability":3.5,"accessibility":3.5,"experience":6.5,"family":5.8,"culture":6.5},
+{"name":"Amsterdam","country":"Netherlands","affordability":3.0,"accessibility":3.5,"experience":6.5,"family":5.5,"culture":6.3},
+{"name":"Zurich","country":"Switzerland","affordability":2.0,"accessibility":3.5,"experience":5.5,"family":5.5,"culture":6.0},
+{"name":"Vienna","country":"Austria","affordability":3.2,"accessibility":3.5,"experience":6.0,"family":5.8,"culture":6.5},
+
+{"name":"New York","country":"USA","affordability":2.8,"accessibility":2.5,"experience":7.0,"family":6.0,"culture":6.5},
+{"name":"Los Angeles","country":"USA","affordability":3.0,"accessibility":2.5,"experience":6.5,"family":6.5,"culture":6.0},
+{"name":"San Francisco","country":"USA","affordability":2.5,"accessibility":2.5,"experience":6.0,"family":6.0,"culture":6.2},
+{"name":"Las Vegas","country":"USA","affordability":3.5,"accessibility":2.5,"experience":6.5,"family":5.5,"culture":5.0},
+{"name":"Honolulu","country":"USA","affordability":3.5,"accessibility":3.5,"experience":5.5,"family":7.0,"culture":5.5},
+
+{"name":"Auckland","country":"New Zealand","affordability":4.5,"accessibility":7.0,"experience":5.5,"family":6.5,"culture":5.5},
+{"name":"Queenstown","country":"New Zealand","affordability":4.0,"accessibility":6.5,"experience":7.0,"family":6.0,"culture":5.5},
+
+{"name":"Gold Coast","country":"Australia","affordability":5.0,"accessibility":7.0,"experience":5.5,"family":7.0,"culture":3.5},
+{"name":"Melbourne","country":"Australia","affordability":4.5,"accessibility":7.0,"experience":6.0,"family":6.0,"culture":4.0},
+{"name":"Sydney","country":"Australia","affordability":4.5,"accessibility":7.0,"experience":6.5,"family":6.5,"culture":4.5},
+
+{"name":"Fiji","country":"Fiji","affordability":4.5,"accessibility":6.5,"experience":4.5,"family":7.0,"culture":5.0},
+{"name":"Maldives","country":"Maldives","affordability":2.5,"accessibility":4.0,"experience":4.0,"family":6.0,"culture":5.5},
+
+{"name":"Istanbul","country":"Turkey","affordability":5.5,"accessibility":4.0,"experience":6.5,"family":5.5,"culture":7.0},
+{"name":"Athens","country":"Greece","affordability":4.5,"accessibility":3.5,"experience":6.0,"family":5.5,"culture":6.5},
+
+{"name":"Cape Town","country":"South Africa","affordability":5.5,"accessibility":3.5,"experience":6.5,"family":5.5,"culture":6.0},
+
+{"name":"Vancouver","country":"Canada","affordability":3.5,"accessibility":2.5,"experience":6.0,"family":6.5,"culture":6.0},
+{"name":"Toronto","country":"Canada","affordability":3.5,"accessibility":2.5,"experience":6.0,"family":6.5,"culture":6.0},
+
+{"name":"Shanghai","country":"China","affordability":5.0,"accessibility":5.0,"experience":6.5,"family":5.5,"culture":6.5},
+{"name":"Beijing","country":"China","affordability":5.0,"accessibility":5.0,"experience":6.5,"family":5.5,"culture":7.0},
+
+{"name":"Ho Chi Minh City","country":"Vietnam","affordability":6.8,"accessibility":5.5,"experience":6.0,"family":5.5,"culture":6.5},
+{"name":"Hanoi","country":"Vietnam","affordability":6.8,"accessibility":5.5,"experience":6.5,"family":5.5,"culture":6.8},
+
+{"name":"Colombo","country":"Sri Lanka","affordability":6.5,"accessibility":5.5,"experience":5.5,"family":6.0,"culture":6.5},
+
+{"name":"Mumbai","country":"India","affordability":6.0,"accessibility":5.0,"experience":6.0,"family":5.0,"culture":7.0},
+{"name":"Delhi","country":"India","affordability":6.0,"accessibility":5.0,"experience":6.5,"family":5.0,"culture":7.0},
+
+{"name":"Mexico City","country":"Mexico","affordability":5.5,"accessibility":2.5,"experience":6.5,"family":5.5,"culture":6.5},
+{"name":"Cancun","country":"Mexico","affordability":5.0,"accessibility":3.0,"experience":5.5,"family":6.5,"culture":5.5}
+]
