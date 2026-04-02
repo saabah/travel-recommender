@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("App loaded");
+});
+
 body {
   margin:0;
   font-family: Arial;
