@@ -1,22 +1,84 @@
-#intro {
-  text-align: left;
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
 }
 
-#intro h1 {
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: white;
+  min-height: 100vh;
+}
+
+h1 {
   text-align: center;
 }
 
-#intro p {
-  line-height: 1.6;
+.progress-bar {
+  height: 8px;
+  background: #ddd;
+  border-radius: 10px;
+  margin: 20px 0;
 }
 
-#intro ul {
-  margin: 15px 0;
+#progress {
+  height: 100%;
+  width: 0%;
+  background: #0077cc;
+  border-radius: 10px;
+  transition: 0.3s;
 }
 
-#intro button {
+.question {
+  margin-top: 30px;
+}
+
+.options {
   margin-top: 20px;
-  width: 100%;
-  padding: 14px;
-  font-size: 16px;
+}
+
+.option {
+  display: block;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #eef3f8;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: #dbe7f3;
+}
+
+.selected {
+  background: #0077cc;
+  color: white;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #0077cc;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#results {
+  margin-top: 30px;
+}
+
+.card {
+  background: #eef3f8;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 8px;
 }
