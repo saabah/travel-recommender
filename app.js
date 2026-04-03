@@ -312,3 +312,48 @@ function calculate() {
 
   showResults(results.slice(0,3), results.slice(3,5), u);
 }
+
+function showResults(top3, wildcard, user){
+
+  let div = document.getElementById("results");
+
+  div.innerHTML = "<h2>🏆 Top Destinations</h2>";
+
+  top3.forEach(c=>{
+    div.innerHTML += card(c, user);
+  });
+
+  div.innerHTML += "<h2>🎯 Wildcard Picks</h2>";
+
+  wildcard.forEach(c=>{
+    div.innerHTML += card(c, user);
+  });
+}
+
+function card(city, user){
+
+  let reasons = [];
+
+  if(user.flight <= 2 && city.accessibility > 6)
+    reasons.push("short and convenient travel");
+
+  if(user.age >= 3 && city.family > 6)
+    reasons.push("excellent family-friendly infrastructure");
+
+  if(user.budget <= 2 && city.affordability > 6)
+    reasons.push("great value for Australian travellers");
+
+  if(user.activity >= 3 && city.experience > 6)
+    reasons.push("high-energy experiences");
+
+  if(user.vibe >= 2 && city.culture > 6)
+    reasons.push("rich cultural experiences");
+
+  let explanation = `Based on your preferences, ${city.name} is a strong match because it offers ${reasons.join(", ")}.`;
+
+  return `
+  <div class="card">
+    <h3>${city.name}</h3>
+    <p>${explanation}</p>
+  </div>`;
+}
