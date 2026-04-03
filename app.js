@@ -52,54 +52,146 @@ function startQuiz() {
   render();
 }
 
-// ----------------
-// QUESTIONS (SHORT VERSION FOR STABILITY)
-// ----------------
 const questions = [
+
 {
   id: "budget",
-  text: "Your budget?",
+  text: "What is your total travel budget?",
   options: [
-    { label: "Low", value: 1 },
-    { label: "Medium", value: 2 },
-    { label: "High", value: 3 }
+    { label: "< $1,500", value: 1 },
+    { label: "$1,500–$3,000", value: 2 },
+    { label: "$3,000–$6,000", value: 3 },
+    { label: "$6,000+", value: 4 }
   ]
 },
 {
   id: "flight",
-  text: "Flight tolerance?",
+  text: "How long can you fly comfortably?",
   options: [
-    { label: "Short", value: 1 },
-    { label: "Medium", value: 2 },
-    { label: "Long", value: 3 }
+    { label: "< 5 hours", value: 1 },
+    { label: "5–10 hours", value: 2 },
+    { label: "10–15 hours", value: 3 },
+    { label: "15+ hours", value: 4 }
+  ]
+},
+{
+  id: "exchange",
+  text: "How important is exchange rate?",
+  options: [
+    { label: "Very important", value: 3 },
+    { label: "Moderate", value: 2 },
+    { label: "Not important", value: 1 }
+  ]
+},
+{
+  id: "booking",
+  text: "Your booking style?",
+  options: [
+    { label: "Fully planned", value: 3 },
+    { label: "Semi-planned", value: 2 },
+    { label: "Flexible", value: 1 }
   ]
 },
 {
   id: "activity",
-  text: "Activity level?",
+  text: "Preferred activity level?",
   options: [
-    { label: "Relax", value: 1 },
+    { label: "Relaxed", value: 1 },
     { label: "Balanced", value: 2 },
-    { label: "Busy", value: 3 }
-  ]
-},
-{
-  id: "family",
-  text: "Travelling with kids?",
-  options: [
-    { label: "No", value: 1 },
-    { label: "Yes", value: 3 }
+    { label: "High-energy", value: 3 }
   ]
 },
 {
   id: "culture",
-  text: "Cultural preference?",
+  text: "Cultural comfort?",
+  options: [
+    { label: "Very comfortable", value: 3 },
+    { label: "Moderate", value: 2 },
+    { label: "Adventurous", value: 1 }
+  ]
+},
+{
+  id: "climate",
+  text: "Preferred climate?",
+  options: [
+    { label: "Tropical", value: 3 },
+    { label: "Mild", value: 2 },
+    { label: "Cold", value: 1 }
+  ]
+},
+{
+  id: "age",
+  text: "Who are you travelling with?",
+  options: [
+    { label: "Adults only", value: 1 },
+    { label: "Toddlers", value: 4 },
+    { label: "Primary school kids", value: 3 },
+    { label: "Teenagers", value: 2 }
+  ]
+},
+{
+  id: "pace",
+  text: "Preferred travel pace?",
+  options: [
+    { label: "Stay in one place", value: 1 },
+    { label: "2–3 places", value: 2 },
+    { label: "Multi-city", value: 3 }
+  ]
+},
+{
+  id: "food",
+  text: "Food preference?",
+  options: [
+    { label: "Picky eater", value: 1 },
+    { label: "Moderate", value: 2 },
+    { label: "Foodie", value: 3 }
+  ]
+},
+{
+  id: "goal",
+  text: "Main goal?",
+  options: [
+    { label: "Relax", value: 1 },
+    { label: "Explore", value: 3 }
+  ]
+},
+{
+  id: "toddler",
+  text: "Toddler needs?",
+  options: [
+    { label: "Very important", value: 3 },
+    { label: "Somewhat", value: 2 },
+    { label: "Not relevant", value: 1 }
+  ]
+},
+{
+  id: "primary",
+  text: "Primary school needs?",
+  options: [
+    { label: "High (theme parks etc.)", value: 3 },
+    { label: "Moderate", value: 2 },
+    { label: "Not important", value: 1 }
+  ]
+},
+{
+  id: "teen",
+  text: "Teenager needs?",
+  options: [
+    { label: "High thrill", value: 3 },
+    { label: "Moderate", value: 2 },
+    { label: "Not relevant", value: 1 }
+  ]
+},
+{
+  id: "vibe",
+  text: "Preferred vibe?",
   options: [
     { label: "Familiar", value: 1 },
-    { label: "Mixed", value: 2 },
-    { label: "Adventure", value: 3 }
+    { label: "Mix", value: 2 },
+    { label: "Unique", value: 3 }
   ]
 }
+
 ];
 
 // ----------------
@@ -156,44 +248,67 @@ function prev() {
 // ----------------
 function calculate() {
 
+  let u = answers;
+
+  // --- BUILD INDICES ---
+  let affordability = (u.budget + u.exchange) / 2;
+
+  let accessibility = (u.flight + u.booking + u.pace) / 3;
+
+  let experience = (u.activity + u.goal) / 2;
+
+  let family = (u.age + u.toddler + u.primary + u.teen) / 4;
+
+  let culture = (u.culture + u.food + u.vibe) / 3;
+
   let results = cities.map(c => {
 
     let score =
-      (answers.budget || 1) * c.affordability +
-      (answers.flight || 1) * c.accessibility +
-      (answers.activity || 1) * c.experience +
-      (answers.family || 1) * c.family +
-      (answers.culture || 1) * c.culture;
+      affordability * c.affordability +
+      accessibility * c.accessibility +
+      experience * c.experience +
+      family * c.family +
+      culture * c.culture;
 
     return { ...c, score };
   });
 
   results.sort((a,b)=>b.score-a.score);
 
-  showResults(results.slice(0,3), results.slice(3,5));
+  showResults(results.slice(0,3), results.slice(3,5), u);
 }
 
 // ----------------
 // RESULTS
 // ----------------
-function showResults(top3, wildcard){
+function calculate() {
 
-  let div = document.getElementById("results");
+  let u = answers;
 
-  div.innerHTML = "<h2>Top Destinations</h2>";
+  // --- BUILD INDICES ---
+  let affordability = (u.budget + u.exchange) / 2;
 
-  top3.forEach(c=>{
-    div.innerHTML += `<div class="card">
-      <h3>${c.name}</h3>
-      <p>Great match based on your preferences.</p>
-    </div>`;
+  let accessibility = (u.flight + u.booking + u.pace) / 3;
+
+  let experience = (u.activity + u.goal) / 2;
+
+  let family = (u.age + u.toddler + u.primary + u.teen) / 4;
+
+  let culture = (u.culture + u.food + u.vibe) / 3;
+
+  let results = cities.map(c => {
+
+    let score =
+      affordability * c.affordability +
+      accessibility * c.accessibility +
+      experience * c.experience +
+      family * c.family +
+      culture * c.culture;
+
+    return { ...c, score };
   });
 
-  div.innerHTML += "<h2>Wildcard Picks</h2>";
+  results.sort((a,b)=>b.score-a.score);
 
-  wildcard.forEach(c=>{
-    div.innerHTML += `<div class="card">
-      <h3>${c.name}</h3>
-    </div>`;
-  });
+  showResults(results.slice(0,3), results.slice(3,5), u);
 }
