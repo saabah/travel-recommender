@@ -228,14 +228,21 @@ function select(id,val) {
 // NEXT / PREV
 // ----------------
 function next() {
-  if(current < questions.length-1){
+
+  let q = questions[current];
+
+  if (!answers[q.id]) {
+    alert("Please select an option");
+    return;
+  }
+
+  if(current < questions.length - 1){
     current++;
     render();
   } else {
     calculate();
   }
 }
-
 function prev() {
   if(current > 0){
     current--;
