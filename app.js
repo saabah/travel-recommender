@@ -49,7 +49,7 @@ function startQuiz() {
   intro.style.display = "none";
   quiz.style.display = "block";
 
-  render();
+  render(window.scrollTo({ top: 0, behavior: "smooth" }););
 }
 
 const questions = [
