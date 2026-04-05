@@ -49,7 +49,7 @@ function startQuiz() {
   intro.style.display = "none";
   quiz.style.display = "block";
 
-  render(window.scrollTo({ top: 0, behavior: "smooth" }););
+  render();
 }
 
 const questions = [
@@ -363,4 +363,25 @@ function card(city, user){
     <h3>${city.name}</h3>
     <p>${explanation}</p>
   </div>`;
+}
+function render() {
+
+  let q = questions[current];
+
+  let html = `<h2>${q.text}</h2>`;
+
+  q.options.forEach(opt => {
+    let selected = answers[q.id] === opt.value ? "selected" : "";
+    html += `<div class="option ${selected}" onclick="select('${q.id}',${opt.value})">
+      ${opt.label}
+    </div>`;
+  });
+
+  document.getElementById("questionBox").innerHTML = html;
+
+  let progress = ((current + 1)/questions.length)*100;
+  document.getElementById("progress").style.width = progress + "%";
+
+  // ✅ ADD THIS LINE (auto scroll)
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
